@@ -9,6 +9,9 @@ module AASM::Persistence
     if hierarchy.include?("ActiveRecord::Base")
       require File.join(File.dirname(__FILE__), 'persistence', 'active_record_persistence')
       base.send(:include, AASM::Persistence::ActiveRecordPersistence)
+    elsif hierarchy.include?("Ohm::Model")
+      require File.join(File.dirname(__FILE__), 'persistence', 'ohm_persistence')
+      base.send(:include, AASM::Persistence::OhmPersistence)
     end
   end
 end
