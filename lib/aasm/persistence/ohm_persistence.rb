@@ -68,15 +68,6 @@ module AASM
         def aasm_current_state
           @current_state = aasm_read_state
         end
-
-        private
-
-        # Ensures that if the aasm_state column is nil and the record is new
-        # that the initial state gets populated before validation on create
-        # Callbacks not implemented with Ohm - nice to have
-        # def aasm_ensure_initial_state
-        #   send("#{self.class.aasm_column}=", self.aasm_enter_initial_state.to_s) if send(self.class.aasm_column).blank?
-        # end
       end
 
       module WriteStateWithoutPersistence
